@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+FSC_BASENAMES=(
+    "s3-msc"
+    "s3-msci-ghost"
+    "s3-msci-inflow"
+    "s3-msci-outflow"
+    "s3-mscm-inflow"
+    "s3-mscm-outflow"
+)
+
+for((i=1;i<=120;i++));do
+    # This block is now wrapped in parentheses, creating a subshell
+    (
+     	MODEL_INDEX=$((($i - 1) % 6 ))
+        FSC_MODEL=${FSC_BASENAMES[$MODEL_INDEX]}
+for((j=1;j<=50;j++));do
+        cp part2.sh "task_$i/sfs/fsc/${FSC_MODEL}/${FSC_MODEL}_$j/"
+        done
+
+	echo "INFO: Finished giving part2 to each bootstrap folder for task $i."
+    ) # The subshell exits here. The main script's directory is unchanged.
+done
+
