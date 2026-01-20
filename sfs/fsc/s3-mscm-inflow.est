@@ -1,0 +1,17 @@
+// Search ranges and rules file
+// ****************************
+[PARAMETERS]
+//#isInt? #name #dist.#min #max
+//all N are in number of haploid individuals
+1 NA unif 1e4 5e6 output
+1 NB unif 1e4 5e6 output
+1 NC unif 1e4 5e6 output
+1 NS unif 1e4 5e6 output
+1 NR unif 1e4 5e6 output
+1 tauS unif 1e4 5e6 output
+1 tauR unif tauS 5e6 output paramInRange
+0 mCB logunif 1e-9 1e-3 output
+
+[COMPLEX PARAMETERS]
+0 rS = NS / NA hide
+0 rR = NR / NS hide
